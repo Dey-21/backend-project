@@ -11,8 +11,6 @@ engine = create_engine(datadase_url)
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-inspector = inspect(engine)
-
 #creacion tablas basadas en modelos
 def initialize_database():
     pass
