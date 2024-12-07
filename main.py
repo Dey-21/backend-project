@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from models.init import initialize_database
+from models import initialize_database
 import uvicorn
 
 app = FastAPI()
