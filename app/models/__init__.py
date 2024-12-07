@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-#from models.sessions import Base as SessionBase
-#from models.users import Base as UserBase
+#from models.session import Base as SessionBase
+#from models.user import Base as UserBase
 import os
 
 #variable de entorno:External Database URL
