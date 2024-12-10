@@ -16,3 +16,4 @@ class Session(Base):
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, index=True)
     token = Column(String, unique=True)
+    expires_at = Column(DateTime, nullable=False)  # Fecha de expiración del token
