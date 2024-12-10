@@ -1,7 +1,17 @@
+from fastapi import FastAPI
 from app.database import Base, engine
-from app.models.user import User
+from app.routes import db_test, users  
+from app.models.user import User, Session
 
-# Crear todas las tablas definidas en los modelos
+app = FastAPI()
+
+# Incluir el enrutador para probar la conexión
+app.include_router(db_test.router, prefix="/db")
+app.include_router(users.router, prefix="/users", tags=["Users"]) 
+
+# Crea las tablas en la base de datos
 Base.metadata.create_all(bind=engine)
 
-print("Tablas creadas con éxito.")
+@app.get("/")
+def read_root():
+    return {"mensaje": "API está funcionando!"}
