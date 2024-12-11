@@ -9,6 +9,9 @@ app = FastAPI()
 app.include_router(db_test.router, prefix="/db")
 app.include_router(users.router, prefix="/users", tags=["Users"]) 
 
+# inclusión routes de usuario
+app.include_router(user_router)
+
 # Crea las tablas en la base de datos
 Base.metadata.create_all(bind=engine)
 
