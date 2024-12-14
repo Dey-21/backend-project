@@ -1,3 +1,4 @@
+import asyncio
 from fastapi import FastAPI
 from app.database import Base, engine
 from app.routes import db_test, users  
@@ -9,8 +10,15 @@ app = FastAPI()
 app.include_router(db_test.router, prefix="/db")
 app.include_router(users.router, prefix="/users", tags=["Users"]) 
 
-# Crea las tablas en la base de datos
-Base.metadata.create_all(bind=engine)
+# Crear las tablas asincrónicamente
+async def create_tables():
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
+
+@app.on_event("startup")
+async def startup():
+    # Ejecutar la creación de tablas cuando la aplicación se inicie
+    await create_tables()
 
 @app.get("/")
 def read_root():
