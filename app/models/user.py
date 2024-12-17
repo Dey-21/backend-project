@@ -10,8 +10,8 @@ class User(Base):
     __tablename__ = "users"
 
     id = Column(Integer, primary_key=True, index=True)
-    username = Column(String, unique=True, index=True)
-    hashed_password = Column(String, nullable=False)  
+    username = Column(String(30), unique=True, index=True, nullable=False)
+    hashed_password = Column(String(50), nullable=False)  
 
 class Session(Base):
     __tablename__ = "sessions"
