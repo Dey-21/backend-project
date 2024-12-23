@@ -14,7 +14,7 @@ Base = declarative_base()
 
 # Configuración de la sesión asincrónica
 AsyncSessionLocal = sessionmaker(
-    engine, class_=AsyncSession, autoflush=False, autocommit=False
+    bind=engine, class_=AsyncSession, autoflush=False, autocommit=False
 )
 
 # Función para obtener la sesión local
