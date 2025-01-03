@@ -10,12 +10,20 @@ class User(Base):
     __tablename__ = "users"
 
     id = Column(Integer, primary_key=True, index=True)
+<<<<<<< HEAD
     username = Column(String(30), unique=True, index=True, nullable=False) # Campo obligatorio y único
+=======
+    username = Column(String(30), unique=True, index=True, nullable=False)
+>>>>>>> 8f614067329a35fb76c4a7b866a17108db53d2b5
     hashed_password = Column(String(50), nullable=False)
     name = Column(String(50), nullable=False)
     lastname = Column(String(100), nullable=False)
     email = Column(String(100), unique=True, nullable=False)  # Campo obligatorio y único
+<<<<<<< HEAD
     phone_number = Column(String(100), unique=True, nullable=False) # Campo obligatorio y único
+=======
+    phone_number = Column(String(100), unique=True, nullable=False)
+>>>>>>> 8f614067329a35fb76c4a7b866a17108db53d2b5
 
     # Relación con Session
     sessions = relationship("Session", back_populates="user")
